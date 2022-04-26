@@ -41,7 +41,7 @@ jobs:
         # Map of absolute file paths as JSON String
        # files: # optional, default is {}
         # A single absolute file path
-        file: 'postage_rate.json'
+        file: 'super_weather.json'
         # Auth Username
        # username: # optional
         # Auth Password

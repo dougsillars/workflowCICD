@@ -1,0 +1,42 @@
+[{
+  "updateTime": 1649870101925,
+  "name": "super_weather",
+  "description": "the super weather API app",
+  "version": 1,
+  "tasks": [
+    {
+      "name": "Get_weather",
+      "taskReferenceName": "get_weather_ref",
+      "inputParameters": {
+        "http_request": {
+          "uri": "https://weatherdbi.herokuapp.com/data/weather/${workflow.input.zip}",
+          "method": "GET",
+          "connectionTimeOut": 2500,
+          "readTimeOut": 2500
+        }
+      },
+      "type": "HTTP",
+      "decisionCases": {},
+      "defaultCase": [],
+      "forkTasks": [],
+      "startDelay": 0,
+      "joinOn": [],
+      "optional": false,
+      "defaultExclusiveJoinTask": [],
+      "asyncComplete": false,
+      "loopOver": []
+    }
+  ],
+  "inputParameters": [],
+  "outputParameters": {
+    "forecast": "${get_weather_ref.output.response.body.currentConditions.comment}"
+  },
+  "schemaVersion": 2,
+  "restartable": true,
+  "workflowStatusListenerEnabled": false,
+  "ownerEmail": "doug.sillars@orkes.io",
+  "timeoutPolicy": "ALERT_ONLY",
+  "timeoutSeconds": 0,
+  "variables": {},
+  "inputTemplate": {}
+}]
