@@ -1,8 +1,0 @@
-HTTP/2 400 
-date: Tue, 26 Apr 2022 14:38:53 GMT
-content-type: application/json
-vary: Origin
-vary: Access-Control-Request-Method
-vary: Access-Control-Request-Headers
-strict-transport-security: max-age=15724800; includeSubDomains
-
