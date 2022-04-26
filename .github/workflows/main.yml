@@ -37,7 +37,7 @@ jobs:
 
     - name: get token name
       id: save_the_token
-      run: token = $(jq ',token' token.json)
+      run: token = $( token.json jq ',token')
     - name: Show Response2
       run: echo ${{ steps.save_the_token.outputs.response }} 
     - name: update workflow
