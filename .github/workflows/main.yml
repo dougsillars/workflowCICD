@@ -34,7 +34,7 @@ jobs:
         # Content Type
         contentType: 'application/json' # optional
         # Request Body as JSON String
-        data: 'postage_rate.json' # optional, default is {}
+        data: '{}' # optional, default is {}
         # Map of absolute file paths as JSON String
        # files: # optional, default is {}
         # A single absolute file path
