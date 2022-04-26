@@ -1,4 +1,4 @@
-{
+[{
 	"updateTime": 1650648759158,
 	"name": "postage_rate",
 	"description": "determine shipping cost: USPS1asasnv nv",
@@ -295,4 +295,4 @@
 	},
 	"inputTemplate": {
 	}
-}
+	}]
