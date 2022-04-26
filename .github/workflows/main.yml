@@ -31,8 +31,13 @@ jobs:
         data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": "${{ secrets.ORKES_WEATHER_SECRET }}"}'
     - name: Show Response
       run: echo ${{ steps.authenticate.outputs.response }}
-    - name: Show Response 2
-      run: echo ${{ steps.authenticate.outputs.response }}.token
+    - name: get JWT
+      id: get_JWT
+      uses: notiz-dev/github-action-json-property@release
+      with: 
+        path: '${{ steps.authenticate.outputs.response }}'
+        prop_path: 'token'
+    - run: echo ${{steps.get_JWT.outputs.prop}}
     - name: update workflow
       uses: fjogeleit/http-request-action@v1.9.1
       with: # Set the secret as an input
@@ -44,5 +49,5 @@ jobs:
         # Content Type
         contentType: 'application/json' # optional
         file: 'super_weather.json'
-        customHeaders: '{"X-Authorization": "${{ steps.authenticate.outputs.response }}.token" }'
+        customHeaders: '{"X-Authorization": "${{steps.get_JWT.outputs.prop}}" }'
 
