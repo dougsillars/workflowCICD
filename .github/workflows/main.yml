@@ -27,7 +27,7 @@ jobs:
         method: 'POST' # optional, default is POST
         # Content Type
         contentType: 'application/json' # optional
-        data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": ""${{ secrets.ORKES_WEATHER_SECRET }}""}'
+        data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": "${{ secrets.ORKES_WEATHER_SECRET }}"}'
        
     - name: update workflow
       uses: fjogeleit/http-request-action@v1.9.1
