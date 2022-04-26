@@ -42,5 +42,5 @@ jobs:
           # Content Type
           contentType: 'application/json' # optional
           file: 'super_weather.json'
-          customHeaders: '{"X-Authorization": "${{ fromJson(steps.authenticate.outputs.response).token }}" }'
+          customHeaders: '{"X-Authorization": "${{ (steps.authenticate.outputs.response).token }}" }'
 
