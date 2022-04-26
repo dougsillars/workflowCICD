@@ -34,7 +34,7 @@ jobs:
     - name: get token name
       id: save_the_token
       run: |
-        jwtJSON=${{ steps.authenticate.outputs.response }}
+        jwtJSON=$( ${{ steps.authenticate.outputs.response }} )
         token = $( jwtJSON | jq '.token')
     - name: Show Response2
       run: echo ${{ steps.save_the_token.outputs.response }} 
