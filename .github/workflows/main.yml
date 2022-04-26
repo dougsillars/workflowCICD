@@ -48,7 +48,7 @@ jobs:
         # Bearer Authentication Token
       #  bearerToken: # optional
         # Custom HTTP Headers
-        customHeaders: '{X-Authorization: eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLm9ya2VzLmlvLyJ9..NQNHtX5cfLYaY_d_.tVZElEr1yvPVEf8GvgghMiHjgaE-xo2nfyyJDAemRz4cVIGaV2HFxWHWNvZWe2BpBQXKEzpKx3hWv1DDeL510bOj-YKFtn20-t-W-oiq4FzncrZwqdhnK6YntS2CKIUXhV9Y4QLPFECMUwNdw6Cg7zreQ3yX6shcC8qOyI-61KcnQ-GiIbu32eIuePZIPYrpYHOOJ6qIZim9Bb7sA6JFoWHTJgxZ15qb3T2TLN23oVv1WawsCb9OqhhtqI3YkAGyNlm6u577qM7WrfhkM-I4N_pWT1GJmkdrhPdokC6urpRpHCZaSmSRNsM.wpb5eJCBr_v7Ho5ToylBmw}'
+        customHeaders: '{X-Authorization: {{secrets.PLAYGROUND_TOKEN}} }'
         # optional
         # Prevent this Action to fail if the request respond without an response
        
