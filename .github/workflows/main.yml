@@ -40,7 +40,7 @@ jobs:
         # Map of absolute file paths as JSON String
        # files: # optional, default is {}
         # A single absolute file path
-        file: '/dougsillars/workflowCICD/postage_rate.json'
+        file: 'postage_rate.json'
         # Auth Username
        # username: # optional
         # Auth Password
