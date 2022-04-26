@@ -31,15 +31,11 @@ jobs:
         data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": "${{ secrets.ORKES_WEATHER_SECRET }}"}'
     - name: Show Response
       run: echo ${{ steps.authenticate.outputs.response }}
-    
     - name: echo artifact
       id: jq_the_token
       run: token = $( ${{ steps.read_property.outputs.value }} | jq '.token')  
       - name: Show Response2
-      run: echo ${{ steps.jq_the_token.outputs.response }}
-    
-    
-   
+      run: echo ${{ steps.jq_the_token.outputs.response }} 
     - name: update workflow
       uses: fjogeleit/http-request-action@v1.9.1
       with: # Set the secret as an input
