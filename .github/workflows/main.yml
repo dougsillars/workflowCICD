@@ -31,13 +31,17 @@ jobs:
         data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": "${{ secrets.ORKES_WEATHER_SECRET }}"}'
     - name: Show Response
       run: echo ${{ steps.authenticate.outputs.response }}
-    - name: get JWT
-      id: get_JWT
-      uses: notiz-dev/github-action-json-property@release
-      with: 
+    - name: Read Properties
+      id: read_property
+      uses:  ashley-taylor/read-json-property-action@v1.0
+      with:
         path: '${{ steps.authenticate.outputs.response }}'
-        prop_path: 'token'
-    - run: echo ${{steps.get_JWT.outputs.prop}}
+        property: token
+    - name: echo artifact
+      run: echo ${{ steps.read_property.outputs.value }}
+    
+    
+   
     - name: update workflow
       uses: fjogeleit/http-request-action@v1.9.1
       with: # Set the secret as an input
