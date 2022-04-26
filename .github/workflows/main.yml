@@ -31,13 +31,9 @@ jobs:
         data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": "${{ secrets.ORKES_WEATHER_SECRET }}"}'
     - name: Show Response
       run: echo ${{ steps.authenticate.outputs.response }}
-    - name: saveoutput
-      id: saveoutput
-      run: ${{ steps.authenticate.outputs.response }} > token.json
-
     - name: get token name
       id: save_the_token
-      run: token = $( token.json jq ',token')
+      run: token = $( ${{ steps.authenticate.outputs.response }}  | jq ',token')
     - name: Show Response2
       run: echo ${{ steps.save_the_token.outputs.response }} 
     - name: update workflow
