@@ -48,7 +48,7 @@ jobs:
         # Bearer Authentication Token
       #  bearerToken: # optional
         # Custom HTTP Headers
-        customHeaders: "X-Authorization: {{secrets.PLAYGROUND_TOKEN}}"
+        customHeaders: X-Authorization: {{ secrets.PLAYGROUND_TOKEN }}
         # optional
         # Prevent this Action to fail if the request respond without an response
        
