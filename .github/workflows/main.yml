@@ -31,14 +31,12 @@ jobs:
         data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": "${{ secrets.ORKES_WEATHER_SECRET }}"}'
     - name: Show Response
       run: echo ${{ steps.authenticate.outputs.response }}
-    - name: Read Properties
-      id: read_property
-      uses:  ashley-taylor/read-json-property-action@v1.0
-      with:
-        path: '${{ steps.authenticate.outputs.response }}'
-        property: token
+    
     - name: echo artifact
-      run: echo ${{ steps.read_property.outputs.value }}
+      id: jq_the_token
+      run: token = $( ${{ steps.read_property.outputs.value }} | jq '.token')  
+      - name: Show Response2
+      run: echo ${{ steps.jq_the_token.outputs.response }}
     
     
    
@@ -53,5 +51,5 @@ jobs:
         # Content Type
         contentType: 'application/json' # optional
         file: 'super_weather.json'
-        customHeaders: '{"X-Authorization": "${{steps.get_JWT.outputs.prop}}" }'
+        customHeaders: '{"X-Authorization": "${{ steps.jq_the_token.outputs.response }}" }'
 
