@@ -19,6 +19,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: authenticate
+      id: authenticate
       uses: fjogeleit/http-request-action@v1.9.1
       with:  
         # Request URL
