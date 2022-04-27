@@ -34,7 +34,6 @@ jobs:
     - name: update workflow
       uses: fjogeleit/http-request-action@v1.9.1
       with: # Set the secret as an input
-          #PLAYGROUND_TOKEN : ${{ secrets.PLAYGROUND_TOKEN }}
           # Request URL
           url: 'https://play.orkes.io/api/metadata/workflow'
           # Request Method
@@ -42,5 +41,5 @@ jobs:
           # Content Type
           contentType: 'application/json' # optional
           file: 'super_weather.json'
-          customHeaders: '{"X-Authorization": "${{ secrets.playground_token }}" }'
+          customHeaders: '{"X-Authorization": "${{ toJson(fromJson(steps.authenticate.outputs.response).token) }}" }'
 
