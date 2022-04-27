@@ -38,7 +38,7 @@ jobs:
           # Request URL
           url: 'https://play.orkes.io/api/metadata/workflow'
           # Request Method
-          #method: 'PUT' # optional, default is POST
+          method: 'PUT' # optional, default is POST
           # Content Type
           #contentType: 'application/json' # optional
           #file: 'super_weather.json'
