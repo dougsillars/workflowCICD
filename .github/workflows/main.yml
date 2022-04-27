@@ -42,6 +42,6 @@ jobs:
           # Content Type
           contentType: 'application/json' # optional
           file: 'super_weather.json'
-          customHeaders: '{"X-Authorization": "${{env.jwtToken}}" }'
+          customHeaders: '{"X-Authorization": ${{env.jwtToken}} }'
 #${{ env.jwtToken }}
 #${{ secrets.playground_token}}
