@@ -1,4 +1,4 @@
-[{
+{
   "updateTime": 1649870101925,
   "name": "super_weather",
   "description": "the super weather API123456",
@@ -39,4 +39,4 @@
   "timeoutSeconds": 0,
   "variables": {},
   "inputTemplate": {}
-}]
+}
