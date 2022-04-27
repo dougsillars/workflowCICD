@@ -30,14 +30,12 @@ jobs:
         contentType: 'application/json' # optional
         data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": "${{ secrets.ORKES_WEATHER_SECRET }}"}'
     - name: Show Response
+      id: parse_response
       run: |
             echo "${{ steps.authenticate.outputs.response }}"
             echo "fromJson( steps.authenticate.outputs.response )" >> jwt.json
             echo "jwtToken=${{ fromJson( steps.authenticate.outputs.response ).token }}" >> $GITHUB_ENV
             echo "jwtJson=${{ fromJson(steps.authenticate.outputs.response)  }}" >> $GITHUB_ENV
-    - name: jw the token
-      id: jq_the_token
-      run: echo "jqToken=$( jwt.json | jq .token)" >> $GITHUB_ENV
     - name: update workflow
       uses: fjogeleit/http-request-action@v1.9.1
       with: # Set the secret as an input
@@ -48,6 +46,6 @@ jobs:
           # Content Type
           contentType: 'application/json' # optional
           file: 'super_weather.json'
-          customHeaders: '{"X-Authorization": "${{env.jwtToken}}" }'
+          customHeaders: '{"X-Authorization": "${{steps.parse_response.outputs.jwtToken}}" }'
 #${{ env.jwtToken }}
 #${{ secrets.playground_token}}
