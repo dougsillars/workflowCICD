@@ -29,9 +29,9 @@ jobs:
         # Content Type
         contentType: 'application/json' # optional
         data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": "${{ secrets.ORKES_WEATHER_SECRET }}"}'
-    - name: Show Response
-      id: get_token
-      run: echo ${{ toJson(fromJson(steps.authenticate.outputs.response).token) }}
+    #- name: Show Response
+    #  id: get_token
+    #  run: echo ${{ toJson(fromJson(steps.authenticate.outputs.response).token) }}
     - name: update workflow
       uses: fjogeleit/http-request-action@v1.9.1
       with: # Set the secret as an input
