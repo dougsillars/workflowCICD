@@ -27,7 +27,7 @@ jobs:
         # Request Method
         method: 'POST' # optional, default is POST
         # Content Type
-        contentType: 'application/json' # optional
+        #contentType: 'application/json' # optional
         data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": "${{ secrets.ORKES_WEATHER_SECRET }}"}'
     - name: Show Response
       run: echo ${{ toJson(fromJson(steps.authenticate.outputs.response).token) }}
