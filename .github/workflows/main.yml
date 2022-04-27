@@ -33,7 +33,7 @@ jobs:
       run: |
             echo "${{ steps.authenticate.outputs.response }}"
             echo "jwtToken=${{ fromJson( steps.authenticate.outputs.response ).token }}" >> $GITHUB_ENV
-            echo "jwtJson=${{ steps.authenticate.outputs.response  }}" >> $GITHUB_ENV
+            echo "jwtJson=${{ fromJson(steps.authenticate.outputs.response)  }}" >> $GITHUB_ENV
     - name: jw the token
       id: jq_the_token
       run: echo "jqToken=( toJson(${{env.jwtJson}}) | jq .token)" >> $GITHUB_ENV
