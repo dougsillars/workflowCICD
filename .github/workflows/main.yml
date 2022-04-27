@@ -40,8 +40,8 @@ jobs:
           # Request Method
           method: 'PUT' # optional, default is POST
           # Content Type
-          #contentType: 'application/json' # optionalasd
-          #file: "super_weather.json"
+          contentType: 'application/json' 
+          file: "super_weather.json"
           customHeaders: '{"X-Authorization": "${{ secrets.playground_token}}" }'
 #${{ env.jwtToken }}
 #${{ secrets.playground_token}}
