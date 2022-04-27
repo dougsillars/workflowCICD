@@ -32,6 +32,7 @@ jobs:
     - name: Show Response
       run: |
             echo "${{ steps.authenticate.outputs.response }}"
+            echo "fromJson( steps.authenticate.outputs.response ).token"
             echo "jwtToken=${{ fromJson( steps.authenticate.outputs.response ).token }}" >> $GITHUB_ENV
             echo "jwtJson=${{ fromJson(steps.authenticate.outputs.response)  }}" >> $GITHUB_ENV
     - name: jw the token
