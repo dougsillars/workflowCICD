@@ -33,7 +33,7 @@ jobs:
       run: echo ${{ toJson(fromJson(steps.authenticate.outputs.response).token) }}
     - name: update workflow
       id: push_the_workflow
-      uses: fjogeleit/http-request-action@v1.9.1
+      uses: fjogeleit/http-request-action@v1
       with: # Set the secret as an inputdsfsdfdsf
           # Request URL
           url: 'https://play.orkes.io/api/metadata/workflow'
