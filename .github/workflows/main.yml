@@ -35,7 +35,7 @@ jobs:
     - name: update workflow
       uses: fjogeleit/http-request-action@v1.9.1
       with: # Set the secret as an input
-          # Request URL
+          # Request URLss
           url: 'https://play.orkes.io/api/metadata/workflow'
           # Request Method
           method: 'PUT' # optional, default is POST
