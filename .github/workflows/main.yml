@@ -34,7 +34,7 @@ jobs:
       run: |
             echo "${{ steps.authenticate.outputs.response }}"
             echo "fromJson( steps.authenticate.outputs.response )" >> jwt.json
-            echo "jwtToken=${{ fromJson( steps.authenticate.outputs.response ).token }}" >> $GITHUB_ENV
+            jwtToken=${{ fromJson( steps.authenticate.outputs.response ).token }} 
             echo "jwtJson=${{ fromJson(steps.authenticate.outputs.response)  }}" >> $GITHUB_ENV
     - name: update workflow
       uses: fjogeleit/http-request-action@v1.9.1
