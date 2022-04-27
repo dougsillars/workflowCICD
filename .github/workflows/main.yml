@@ -30,7 +30,7 @@ jobs:
         contentType: 'application/json' # optional
         data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": "${{ secrets.ORKES_WEATHER_SECRET }}"}'
     - name: Show Response
-      is: get_token
+      id: get_token
       run: |
             echo "${{ toJson(fromJson( steps.authenticate.outputs.response ).token )}}"
     - name: update workflow
