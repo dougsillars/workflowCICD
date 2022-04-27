@@ -32,7 +32,7 @@ jobs:
     - name: Show Response
       run: |
             echo "${{ steps.authenticate.outputs.response }}"
-            echo "jwtToken=${{ fromJson( ${{ steps.authenticate.outputs.response }} ).token }}" >> $GITHUB_ENV
+            echo "jwtToken=${{ fromJson( steps.authenticate.outputs.response ).token }}" >> $GITHUB_ENV
             echo "${{env.jwtToken}}"
     - name: update workflow
       uses: fjogeleit/http-request-action@v1.9.1
