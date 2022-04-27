@@ -30,15 +30,15 @@ jobs:
         headers: '{ "Content-Type": "application/json" }'
         data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": "${{ secrets.ORKES_WEATHER_SECRET }}"}'
     - name: Show Response
-      run: echo ${{ toJson(fromJson(steps.authenticate.outputs.response).token) }}
+     run: echo "jwtToken=${{ fromJson( steps.authenticate.outputs.response ).token }}" >> $GITHUB_ENV
     - name: update workflow
       id: push_the_workflow
       uses: fjogeleit/http-request-action@v1.9.1
       with: 
           # Request URL
           url: 'https://play.orkes.io/api/metadata/workflow'
-          customHeaders: '{"X-Authorization": "${{ secrets.PLAYGROUND.TOKEN }}" }'
-          method: 'POST' # optional, default is POST
+          customHeaders: '{"X-Authorization": "${{ secrets.PLAYGROUND_TOKEN }}" }'
+          method: 'PUT' # optional, default is POST
           contentType: 'application/json' # optional
           file: 'super_weather.json'
           
