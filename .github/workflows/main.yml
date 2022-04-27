@@ -30,7 +30,7 @@ jobs:
         headers: '{ "Content-Type": "application/json" }'
         data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": "${{ secrets.ORKES_WEATHER_SECRET }}"}'
     - name: Show Response
-     run: echo "jwtToken=${{ fromJson( steps.authenticate.outputs.response ).token }}" >> $GITHUB_ENV
+      run: echo "jwtToken=${{ fromJson( steps.authenticate.outputs.response ).token }}" >> $GITHUB_ENV
     - name: update workflow
       id: push_the_workflow
       uses: fjogeleit/http-request-action@v1.9.1
