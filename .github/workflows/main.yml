@@ -41,7 +41,7 @@ jobs:
           method: 'PUT' # optional, default is POST
           # Content Type
           #contentType: 'application/json' # optional
-          #file: 'super_weather.json'
+          file: 'super_weather.json'
           customHeaders: '{"X-Authorization": "${{ secrets.playground_token}}" }'
 #${{ env.jwtToken }}
 #${{ secrets.playground_token}}
