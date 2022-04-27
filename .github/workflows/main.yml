@@ -31,8 +31,7 @@ jobs:
         data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": "${{ secrets.ORKES_WEATHER_SECRET }}"}'
     - name: Show Response
       id: get_token
-      run: |
-            echo "${{ toJson(fromJson( steps.authenticate.outputs.response ).token )}}"
+      run: echo ${{ toJson(fromJson(steps.authenticate.outputs.response).token) }}
     - name: update workflow
       uses: fjogeleit/http-request-action@v1.9.1
       with: # Set the secret as an input
@@ -43,6 +42,5 @@ jobs:
           # Content Type
           contentType: 'application/json' # optional
           file: 'super_weather.json'
-          customHeaders: '{"X-Authorization": "${{ secrets.production_token }}" }'
-#${{ env.jwtToken }}
-#${{ secrets.playground_token}}
+          customHeaders: '{"X-Authorization": "${{ secrets.playground_token }}" }'
+
