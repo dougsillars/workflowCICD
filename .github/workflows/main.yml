@@ -20,24 +20,28 @@ jobs:
       uses: actions/checkout@v2
     - name: authenticate
       id: authenticate
-      uses: CamiloGarciaLaRotta/watermelon-http-client@v1
+      uses: fjogeleit/http-request-action@v1.9.1
       with:  
         # Request URL
         url: 'https://play.orkes.io/api/token'
         # Request Method
         method: 'POST' # optional, default is POST
         # Content Type
-        headers: '{ "Content-Type": "application/json" }'
+        contentType: 'application/json' # optional
         data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": "${{ secrets.ORKES_WEATHER_SECRET }}"}'
     - name: Show Response
-      run: echo "jwtToken=${{ fromJson( steps.authenticate.outputs.response ).token }}" >> $GITHUB_ENV
+      run: |
+            echo "jwtToken=${{ fromJson(steps.authenticate.outputs.response).token }}" >> $GITHUB_ENV
     - name: update workflow
       uses: fjogeleit/http-request-action@v1.9.1
-      with: 
+      with: # Set the secret as an input
           # Request URL
           url: 'https://play.orkes.io/api/metadata/workflow'
-          customHeaders: '{"X-Authorization": "${{ secrets.PLAYGROUND_TOKEN }}" }'
+          # Request Method
           method: 'PUT' # optional, default is POST
+          # Content Type
           contentType: 'application/json' # optional
           file: 'super_weather.json'
-          
+          customHeaders: '{"X-Authorization": "${{ secrets.playground_token}}" }'
+#${{ env.jwtToken }}
+#${{ secrets.playground_token}}
