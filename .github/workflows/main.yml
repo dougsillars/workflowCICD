@@ -33,7 +33,7 @@ jobs:
       run: |
             echo "jwtToken=${{ fromJson(steps.authenticate.outputs.response).token }}" >> $GITHUB_ENV
             echo "jwtJson=${{ steps.authenticate.outputs.response }}" >> $GITHUB_ENV
-            echo " jqToken = ($jwtJson | jq '.token')"
+            echo " jqToken = $($jwtJson | jq '.token')"
     - name: update workflow
       uses: fjogeleit/http-request-action@v1.9.1
       with: # Set the secret as an input
