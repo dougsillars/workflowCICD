@@ -35,6 +35,8 @@ jobs:
             echo "jwtJson=${{ steps.authenticate.outputs.response }}" >> $GITHUB_ENV 
           # echo "jqToken=$( fromJson(${{ steps.authenticate.outputs.response }}) | jq '.token')" >>$GITHUB_ENV
   post:
+        # The type of runner that the job will run on
+    runs-on: ubuntu-latest
     steps:  
     - name: update workflow
       uses: fjogeleit/http-request-action@v1.9.1
