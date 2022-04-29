@@ -14,6 +14,8 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+      outputs: ${{ steps.token.outputs.json }}
+      outputs: ${{ steps.token.outputs.jwt }}
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - name: Checkout
@@ -30,9 +32,12 @@ jobs:
         contentType: 'application/json' # optional
         data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": "${{ secrets.ORKES_WEATHER_SECRET }}"}'
     - name: Show Response
+      id: token
       run: |
             echo "jwtToken=${{ fromJson(steps.authenticate.outputs.response).token }}" >> $GITHUB_ENV
             echo "jwtJson=${{ steps.authenticate.outputs.response }}" >> $GITHUB_ENV 
+            echo "::set-output name=json::${{ steps.authenticate.outputs.response }}"
+            echo "::set-output name=jwt::${{ fromJson(steps.authenticate.outputs.response).token }}"
           # echo "jqToken=$( fromJson(${{ steps.authenticate.outputs.response }}) | jq '.token')" >>$GITHUB_ENV
   post:
     needs: build
@@ -51,6 +56,6 @@ jobs:
           # Content Type
           contentType: 'application/json' 
           file: 'super_weather.json'
-          customHeaders: '{"X-Authorization": "${{ toJson(fromJson( needs.build.steps.authenticate.outputs.response ).token) }}" }'
+          customHeaders: '{"X-Authorization": "${{ needs.build.outputs.jwt }}" }'
 #${{ env.jwtToken }}
 #${{ secrets.playground_token}}
