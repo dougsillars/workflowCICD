@@ -48,6 +48,6 @@ jobs:
           # Content Type
           contentType: 'application/json' 
           file: 'super_weather.json'
-          customHeaders: '{"X-Authorization": "${{ toJson(steps.authenticate.outputs.response) }}" }'
+          customHeaders: '{"X-Authorization": "${{ fromJson(toJson(steps.authenticate.outputs.response)).token }}" }'
 #${{ env.jwtToken }}
 #${{ secrets.playground_token}}
