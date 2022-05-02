@@ -36,7 +36,7 @@ jobs:
             echo "jwtJsontoJson=${{ toJson(steps.authenticate.outputs.response) }}" >> $GITHUB_ENV 
             echo "jwtJson=${{ steps.authenticate.outputs.response }}" >> $GITHUB_ENV
             echo "::set-output name=json::${{ steps.authenticate.outputs.response }}"
-            echo "::set-output name=jwt::${{ fromJson(steps.authenticate.outputs.response).token }}"
+            echo "::set-output name=JWT::${{ fromJson(steps.authenticate.outputs.response).token }}"
           # echo "jqToken=$( fromJson(${{ steps.authenticate.outputs.response }}) | jq '.token')" >>$GITHUB_ENV
     - name: update workflow
       uses: fjogeleit/http-request-action@v1.9.1
@@ -48,6 +48,6 @@ jobs:
           # Content Type
           contentType: 'application/json' 
           file: 'super_weather.json'
-          customHeaders: '{"X-Authorization": "${{ fromJson(steps.getToken.outputs.jwt) }}" }'
+          customHeaders: '{"X-Authorization": "${{ steps.getToken.outputs.JWT }}" }'
 #${{ env.jwtToken }}
 #${{ secrets.playground_token}}
