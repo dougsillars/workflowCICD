@@ -23,9 +23,9 @@ jobs:
       with: # Set the secret as an input
           # Request URLss
           url: 'https://play.orkes.io/api/metadata/workflow'
-          customHeaders: '{"X-Authorization": "poo"}'
+          customHeaders: '{"X-Authorization": "${{ secrets.PLAYGROUND_TOKEN }}"}'
           # Request Method
-          method: 'POST' # optional, default is POST
+          method: 'PUT' # optional, default is POST
           # Content Type
           #contentType: 'application/json' 
           files: '{"file":"super_weather.json"}'
