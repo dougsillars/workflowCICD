@@ -27,5 +27,5 @@ jobs:
           # Request Method
           method: 'PUT' # optional, default is POST
           # Content Type
-          #contentType: 'application/json' 
+          contentType: 'application/json' 
           files: '{"file":"super_weather.json"}'
