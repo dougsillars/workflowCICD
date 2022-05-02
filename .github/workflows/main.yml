@@ -18,12 +18,23 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - name: authenticate
+      id: authenticate
+      uses: fjogeleit/http-request-action@v1.9.1
+      with:  
+        # Request URL
+        url: 'https://play.orkes.io/api/token'
+        # Request Method
+        method: 'POST' # optional, default is POST
+        # Content Type
+        contentType: 'application/json' # optional
+        data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": "${{ secrets.ORKES_WEATHER_SECRET }}"}'
     - name: update workflow
       uses: fjogeleit/http-request-action@v1.9.1
       with: # Set the secret as an input
           # Request URLss
           url: 'https://play.orkes.io/api/metadata/workflow'
-          customHeaders: '{"X-Authorization": "${{ secrets.PLAYGROUND_TOKEN }}"}'
+          customHeaders: '{"X-Authorization": "${{ fromJson(steps.authenticate.outputs.response).token }}"}'
           # Request Method
           method: 'PUT' # optional, default is POST
           # Content Type
