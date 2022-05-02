@@ -23,7 +23,7 @@ jobs:
       with: # Set the secret as an input
           # Request URLss
           url: 'https://play.orkes.io/api/metadata/workflow'
-          customHeaders: '{"X-Authorization": "${{ secrets.PLAYGROUND_TOKEN }}"}'
+          customHeaders: '{"X-Authorization": "poo"}'
           # Request Method
           method: 'POST' # optional, default is POST
           # Content Type
