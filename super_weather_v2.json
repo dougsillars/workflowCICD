@@ -1,6 +1,6 @@
 [{
   "name": "super_weather",
-  "description": "the super weather API",
+  "description": "the super weather API v2",
   "version": 2,
   "tasks": [
     {
