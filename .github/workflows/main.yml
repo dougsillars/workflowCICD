@@ -29,7 +29,7 @@ jobs:
         # Content Type
         contentType: 'application/json' # optional
         data: '{"keyId": "${{ secrets.ORKES_WEATHER_KEY }}", "keySecret": "${{ secrets.ORKES_WEATHER_SECRET }}"}'
-    - name: update weather v1
+    - name: update workflow
       uses: fjogeleit/http-request-action@v1.9.1
       with: # Set the secret as an input
           # Request URLss
@@ -39,15 +39,4 @@ jobs:
           method: 'PUT' # optional, default is POST
           # Content Type
           contentType: 'application/json' 
-          file: "super_weather_v1.json"
-    - name: update weather v2
-      uses: fjogeleit/http-request-action@v1.9.1
-      with: # Set the secret as an input
-          # Request URLss
-          url: 'https://play.orkes.io/api/metadata/workflow'
-          customHeaders: '{"X-Authorization": "${{secrets.PLAYGROUND_TOKEN}}"}'
-          # Request Method
-          method: 'PUT' # optional, default is POST
-          # Content Type
-          contentType: 'application/json' 
-          file: "super_weather_v2.json"
+          file: "super_weather.json"
