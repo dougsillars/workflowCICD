@@ -39,4 +39,4 @@ jobs:
           method: 'PUT' # optional, default is POST
           # Content Type
           contentType: 'application/json' 
-          file: "super_weather.json"
+          file: "super_weather_v1.json"
