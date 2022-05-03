@@ -40,7 +40,7 @@ jobs:
           # Content Type
           contentType: 'application/json' 
           file: "super_weather_v1.json"
-     - name: update weather v2
+    - name: update weather v2
       uses: fjogeleit/http-request-action@v1.9.1
       with: # Set the secret as an input
           # Request URLss
